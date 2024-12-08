@@ -16,12 +16,11 @@
 
 #pragma once
 
-#define MK_VARIANT MK_TYPE_KINETIC
+#define MOUSEKEY_INERTIA
 
-#define MK_KINETIC_MOUSE_MAXS 72
-#define MK_KINETIC_MOUSE_ACCN 22
-#define MK_KINETIC_MOUSE_FRIC 14
-#define MK_KINETIC_MOUSE_DRAG 18
-
-#define MK_KINETIC_WHEEL_MAXS 1
-#define MK_KINETIC_WHEEL_ACCN 16
+#define MOUSEKEY_DELAY 24       // Delay between pressing a movement key and cursor movement
+#define MOUSEKEY_INTERVAL 16    // Time between cursor movements in milliseconds(16 = 60fps)
+#define MOUSEKEY_MAX_SPEED 32   // Maximum cursor speed at which acceleration stops
+#define MOUSEKEY_TIME_TO_MAX 32 // Number of frames until maximum cursor speed is reached
+#define MOUSEKEY_FRICTION 24    // How quickly the cursor stops after releasing a key
+#define MOUSEKEY_MOVE_DELTA 2
