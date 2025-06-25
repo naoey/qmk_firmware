@@ -16,13 +16,14 @@
 
 #include QMK_KEYBOARD_H
 
-enum planck_layers { _QWERTY, _FUNCTION, _MOUSE, _SYMBOL, _ADJUST };
+enum planck_layers { _QWERTY, _FUNCTION, _MOUSE, _SYMBOL, _ADJUST, _NAV };
 
 enum planck_keycodes { QWERTY = SAFE_RANGE };
 
 #define FUNCTION MO(_FUNCTION)
 #define SYMBOL MO(_SYMBOL)
 #define MOUSE MO(_MOUSE)
+#define NAV MO(_NAV)
 
 // Commonly used shortcuts
 #define CUT LGUI(KC_X)
@@ -41,6 +42,9 @@ enum planck_keycodes { QWERTY = SAFE_RANGE };
 #define YAB_4 LGUI(LCTL(KC_4))
 #define YAB_5 LGUI(LCTL(KC_5))
 
+// Mute keybind for Zoom/Discord etc.
+#define MUTE LGUI(LCTL(KC_0))
+
 /* clang-format off */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -57,9 +61,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_QWERTY] = LAYOUT_planck_grid(
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,LT(_NAV, KC_SCLN), KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    _______, KC_LCTL, KC_LALT, KC_LGUI, FUNCTION,   MOUSE, KC_SPC,  SYMBOL,   _______, _______, _______,   _______
+    _______, KC_LCTL, KC_LALT, KC_LGUI, MOUSE, FUNCTION, SYMBOL, KC_SPC,  _______, _______, _______,   _______
 ),
 
 /* Lower
@@ -74,9 +78,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_FUNCTION] = LAYOUT_planck_grid(
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______, _______, _______,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, SCT_SCRN, SCT_AREA, SCT_ALL, REC_AREA,  _______,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______,     MUTE, _______,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, SCT_SCRN,SCT_AREA, SCT_ALL, REC_AREA, _______,
     _______, _______, DEL_WORD, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______,  KC_MUTE, _______, _______, _______
+),
+
+
+/* Navigation
+ * ,-----------------------------------------------------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_NAV] = LAYOUT_planck_grid(
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -110,8 +133,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_MOUSE] = LAYOUT_planck_grid(
-    _______, YAB_1,   YAB_2,   YAB_3,   YAB_4,   YAB_5,   _______, _______, KC_MS_U, MS_ACL0, _______, _______,
-    _______, _______, _______, _______, _______, _______, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, _______,
+    _______, YAB_1,   YAB_2,   YAB_3,   YAB_4,   YAB_5,   _______, KC_PGUP, KC_MS_U, _______, _______, _______,
+    _______, _______, _______, KC_PGDN, _______, _______, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, _______,
     _______, _______, CUT,     COPY,    PASTE,   _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, MS_BTN1, MS_BTN2, _______, _______, _______
 ),
@@ -137,18 +160,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-static bool process_nav(uint16_t keycode, keyrecord_t *record) {
-    return true;
-}
-
 // This stuff came by default and is probably called at a higher level
 layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _FUNCTION, _SYMBOL, _ADJUST);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (!process_nav(keycode, record)) return false;
-
     switch (keycode) {
         case QWERTY:
             if (record->event.pressed) {
