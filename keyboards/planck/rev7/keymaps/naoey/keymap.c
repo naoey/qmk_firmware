@@ -20,7 +20,7 @@ enum planck_layers { _QWERTY, _FUNCTION, _MOUSE, _SYMBOL, _ADJUST, _NAV };
 
 enum planck_keycodes { QWERTY = SAFE_RANGE };
 
-enum custom_keycodes { N_RARW };
+enum custom_keycodes { N_RARW, N_RSAR };
 
 #define FUNCTION MO(_FUNCTION)
 #define SYMBOL MO(_SYMBOL)
@@ -57,7 +57,7 @@ enum custom_keycodes { N_RARW };
 // #define RESZ_WIN LCTL(LSFT(LALT()))
 
 // Mute keybind for Zoom/Discord etc.
-#define MUTE LGUI(LCTL(KC_0))
+#define MIC_MUT LGUI(LCTL(KC_0))
 
 /* clang-format off */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_FUNCTION] = LAYOUT_planck_grid(
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   SNAP_L, SNAP_FS, SNAP_R,     MUTE, _______,
+    _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   SNAP_L, SNAP_FS, SNAP_R,     MIC_MUT, KC_DEL,
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, CS_AREA_SV, CS_AREA_AN, CS_SCRN, CS_REC, CS_ALL,
     _______, _______, DEL_WORD, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT,
     _______, _______, _______, _______, _______, _______, _______, _______,  KC_MUTE, _______, _______, _______
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SYMBOL] = LAYOUT_planck_grid(
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
     _______, KC_LBRC, KC_RBRC, _______, _______, _______, N_RARW, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, N_RSAR, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -186,14 +186,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_QWERTY);
             }
             return false;
-            break;
 
         case N_RARW:
             if (record->event.pressed) {
                 SEND_STRING("=>");
             }
             return false;
-            break;
+
+        case N_RSAR:
+            if (record->event.pressed) {
+                SEND_STRING("->");
+            }
+            return false;
     }
     return true;
 }
