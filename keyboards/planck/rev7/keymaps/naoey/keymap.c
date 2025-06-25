@@ -32,10 +32,14 @@ enum custom_keycodes { N_RARW };
 #define COPY LGUI(KC_C)
 #define PASTE LGUI(KC_V)
 #define DEL_WORD LALT(KC_BSPC)
-#define SCT_SCRN LGUI(LSFT(KC_3))
-#define SCT_AREA LGUI(LSFT(KC_4))
-#define SCT_ALL LGUI(LSFT(KC_5))
-#define REC_AREA LGUI(LSFT(KC_6))
+
+// CleanShot
+#define CS_AREA_SV LGUI(LSFT(KC_4))
+#define CS_AREA_CP LCTL(LGUI(LSFT(KC_4)))
+#define CS_AREA_AN LALT(LGUI(KC_4))
+#define CS_SCRN LGUI(LSFT(KC_3))
+#define CS_ALL LGUI(LSFT(KC_5))
+#define CS_REC LGUI(LSFT(KC_6))
 
 // Yabai space navigation
 #define YAB_1 LGUI(LCTL(KC_1))
@@ -89,8 +93,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_FUNCTION] = LAYOUT_planck_grid(
     KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   SNAP_L, SNAP_FS, SNAP_R,     MUTE, _______,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, SCT_SCRN,SCT_AREA, SCT_ALL, REC_AREA, _______,
-    _______, _______, DEL_WORD, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, _______,
+    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, CS_AREA_SV, CS_AREA_AN, CS_SCRN, CS_REC, CS_ALL,
+    _______, _______, DEL_WORD, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT,
     _______, _______, _______, _______, _______, _______, _______, _______,  KC_MUTE, _______, _______, _______
 ),
 
