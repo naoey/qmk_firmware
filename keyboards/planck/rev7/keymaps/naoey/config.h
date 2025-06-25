@@ -26,3 +26,8 @@
 #define MOUSEKEY_TIME_TO_MAX 48 // Number of frames until maximum cursor speed is reached
 #define MOUSEKEY_FRICTION 20    // How quickly the cursor stops after releasing a key
 #define MOUSEKEY_MOVE_DELTA 2
+
+#define MOUSEKEY_WHEEL_DELAY 0
+#define MOUSEKEY_WHEEL_INTERVAL 60
+#define MOUSEKEY_WHEEL_MAX_SPEED 12
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 32
