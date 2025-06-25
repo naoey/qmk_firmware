@@ -20,6 +20,8 @@ enum planck_layers { _QWERTY, _FUNCTION, _MOUSE, _SYMBOL, _ADJUST, _NAV };
 
 enum planck_keycodes { QWERTY = SAFE_RANGE };
 
+enum custom_keycodes { N_RARW };
+
 #define FUNCTION MO(_FUNCTION)
 #define SYMBOL MO(_SYMBOL)
 #define MOUSE MO(_MOUSE)
@@ -124,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_SYMBOL] = LAYOUT_planck_grid(
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    _______, KC_LBRC, KC_RBRC, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
+    _______, KC_LBRC, KC_RBRC, _______, _______, _______, N_RARW, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
@@ -178,6 +180,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+            break;
+
+        case N_RARW:
+            if (record->event.pressed) {
+                SEND_STRING("=>");
             }
             return false;
             break;
