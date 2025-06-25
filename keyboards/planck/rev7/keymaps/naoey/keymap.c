@@ -42,6 +42,13 @@ enum planck_keycodes { QWERTY = SAFE_RANGE };
 #define YAB_4 LGUI(LCTL(KC_4))
 #define YAB_5 LGUI(LCTL(KC_5))
 
+// BTT
+#define SNAP_L LCTL(LALT(KC_LEFT))
+#define SNAP_R LCTL(LALT(KC_RGHT))
+#define SNAP_FS LCTL(LALT(KC_DOTj))
+#define DRAG_WIN LCTL(LSHFT())
+#define RESZ_WIN LCTL(LSHFT(LALT()))
+
 // Mute keybind for Zoom/Discord etc.
 #define MUTE LGUI(LCTL(KC_0))
 
@@ -78,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_FUNCTION] = LAYOUT_planck_grid(
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______,     MUTE, _______,
+    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   SNAP_L, SNAP_FS, SNAP_R,     MUTE, _______,
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, SCT_SCRN,SCT_AREA, SCT_ALL, REC_AREA, _______,
     _______, _______, DEL_WORD, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, _______,
     _______, _______, _______, _______, _______, _______, _______, _______,  KC_MUTE, _______, _______, _______
@@ -97,8 +104,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_NAV] = LAYOUT_planck_grid(
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
+    _______, _______, KC_LALT, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______,
+    _______, _______, _______, KC_PGDN, _______, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
@@ -116,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_SYMBOL] = LAYOUT_planck_grid(
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-    _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
+    _______, KC_LBRC, KC_RBRC, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
@@ -134,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_MOUSE] = LAYOUT_planck_grid(
     _______, YAB_1,   YAB_2,   YAB_3,   YAB_4,   YAB_5,   _______, KC_PGUP, KC_MS_U, _______, _______, _______,
-    _______, _______, _______, KC_PGDN, _______, _______, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, _______,
+    _______, DRAG_WIN,RSZ_WIN, KC_PGDN, _______, _______, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, _______,
     _______, _______, CUT,     COPY,    PASTE,   _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, MS_BTN1, MS_BTN2, _______, _______, _______
 ),
