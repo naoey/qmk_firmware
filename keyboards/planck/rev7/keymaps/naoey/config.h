@@ -16,11 +16,13 @@
 
 #pragma once
 
+// Mouse configuration
+
 #define MOUSEKEY_INERTIA
 
-#define MOUSEKEY_DELAY 10       // Delay between pressing a movement key and cursor movement
-#define MOUSEKEY_INTERVAL 8    // Time between cursor movements in milliseconds(16 = 60fps)
-#define MOUSEKEY_MAX_SPEED 24   // Maximum cursor speed at which acceleration stops
-#define MOUSEKEY_TIME_TO_MAX 64 // Number of frames until maximum cursor speed is reached
-#define MOUSEKEY_FRICTION 24    // How quickly the cursor stops after releasing a key
+#define MOUSEKEY_DELAY 0       // Delay between pressing a movement key and cursor movement
+#define MOUSEKEY_INTERVAL 7    // Time between cursor movements in milliseconds(16 = 60fps)
+#define MOUSEKEY_MAX_SPEED 28   // Maximum cursor speed at which acceleration stops
+#define MOUSEKEY_TIME_TO_MAX 48 // Number of frames until maximum cursor speed is reached
+#define MOUSEKEY_FRICTION 20    // How quickly the cursor stops after releasing a key
 #define MOUSEKEY_MOVE_DELTA 2
