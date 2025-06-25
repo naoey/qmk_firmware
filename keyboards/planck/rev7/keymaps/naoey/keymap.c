@@ -45,9 +45,10 @@ enum planck_keycodes { QWERTY = SAFE_RANGE };
 // BTT
 #define SNAP_L LCTL(LALT(KC_LEFT))
 #define SNAP_R LCTL(LALT(KC_RGHT))
-#define SNAP_FS LCTL(LALT(KC_DOTj))
-#define DRAG_WIN LCTL(LSHFT())
-#define RESZ_WIN LCTL(LSHFT(LALT()))
+#define SNAP_FS LCTL(LALT(KC_DOT))
+// TODO: add custom processing since it seems QMK won't support modifiers without final keystroke
+// #define DRAG_WIN LCTL(LSFT())
+// #define RESZ_WIN LCTL(LSFT(LALT()))
 
 // Mute keybind for Zoom/Discord etc.
 #define MUTE LGUI(LCTL(KC_0))
@@ -141,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_MOUSE] = LAYOUT_planck_grid(
     _______, YAB_1,   YAB_2,   YAB_3,   YAB_4,   YAB_5,   _______, KC_PGUP, KC_MS_U, _______, _______, _______,
-    _______, DRAG_WIN,RSZ_WIN, KC_PGDN, _______, _______, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, _______,
+    _______, _______,_______, KC_PGDN, _______, _______, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, _______,
     _______, _______, CUT,     COPY,    PASTE,   _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, MS_BTN1, MS_BTN2, _______, _______, _______
 ),
