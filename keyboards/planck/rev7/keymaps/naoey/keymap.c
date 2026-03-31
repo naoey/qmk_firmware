@@ -48,10 +48,9 @@ enum custom_keycodes { N_RARW, N_RSAR };
 #define YAB_4 LGUI(LCTL(KC_4))
 #define YAB_5 LGUI(LCTL(KC_5))
 
-// BTT
-#define SNAP_L LCTL(LALT(KC_LEFT))
-#define SNAP_R LCTL(LALT(KC_RGHT))
-#define SNAP_FS LCTL(LALT(KC_DOT))
+// JetBrains shortcuts
+#define JB_RERN LCTL(LALT(LSFT(KC_D)))
+
 // TODO: add custom processing since it seems QMK won't support modifiers without final keystroke
 // #define DRAG_WIN LCTL(LSFT())
 // #define RESZ_WIN LCTL(LSFT(LALT()))
@@ -92,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_FUNCTION] = LAYOUT_planck_grid(
-    _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   SNAP_L, SNAP_FS, SNAP_R,     MIC_MUT, KC_DEL,
+    JB_RERN,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______,     MIC_MUT, KC_DEL,
     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, CS_AREA_SV, CS_AREA_AN, CS_SCRN, CS_REC, CS_ALL,
     _______, _______, DEL_WORD, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_MPLY, KC_MNXT,
     _______, _______, _______, _______, _______, _______, _______, _______,  KC_MUTE, _______, _______, _______
