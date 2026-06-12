@@ -20,12 +20,12 @@
 
 #define MOUSEKEY_INERTIA
 
-#define MOUSEKEY_DELAY 0       // Delay between pressing a movement key and cursor movement
-#define MOUSEKEY_INTERVAL 7    // Time between cursor movements in milliseconds(16 = 60fps)
-#define MOUSEKEY_MAX_SPEED 28   // Maximum cursor speed at which acceleration stops
-#define MOUSEKEY_TIME_TO_MAX 48 // Number of frames until maximum cursor speed is reached
-#define MOUSEKEY_FRICTION 20    // How quickly the cursor stops after releasing a key
-#define MOUSEKEY_MOVE_DELTA 2
+#define MOUSEKEY_DELAY 0         // Instant launch with zero pre-travel lag
+#define MOUSEKEY_INTERVAL 8      // 8ms aligns perfectly with a standard 125Hz USB poll rate
+#define MOUSEKEY_MOVE_DELTA 1    // Allows 1-pixel steps on quick taps so you can hit UI buttons perfectly
+#define MOUSEKEY_MAX_SPEED 16    // Fast enough to sweep across a 4K monitor, but completely controllable
+#define MOUSEKEY_TIME_TO_MAX 22  // Halved from before. Hits top speed in ~175ms for a very aggressive, snappy launch
+#define MOUSEKEY_FRICTION 38     // Higher friction gives the cursor tactile "weight" and drops the anchors fast when you let go
 
 #define MOUSEKEY_WHEEL_DELAY 0
 #define MOUSEKEY_WHEEL_INTERVAL 60
