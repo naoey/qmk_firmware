@@ -27,7 +27,7 @@
 #define MOUSEKEY_TIME_TO_MAX 22  // Halved from before. Hits top speed in ~175ms for a very aggressive, snappy launch
 #define MOUSEKEY_FRICTION 38     // Higher friction gives the cursor tactile "weight" and drops the anchors fast when you let go
 
-#define MOUSEKEY_WHEEL_DELAY 0
-#define MOUSEKEY_WHEEL_INTERVAL 60
-#define MOUSEKEY_WHEEL_MAX_SPEED 12
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 32
+#define MOUSEKEY_WHEEL_DELAY 0         // Instant scroll response upon keypress
+#define MOUSEKEY_WHEEL_INTERVAL 30     // Cut in half (from 60). More frequent updates mean much smoother scrolling
+#define MOUSEKEY_WHEEL_MAX_SPEED 8     // Clean, fast top speed without overshooting pages
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 6   // Reaches top speed in 180ms (6 frames * 30ms)
